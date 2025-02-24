@@ -1,40 +1,41 @@
 @model MediaExameModel;
 
-<h2>Cálculo da Média de provas UNIRP</h2>
-<form method="post">
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                <label asp-for="intermediaria" class="form-label">Nota da Prova Intermediária: </label>
-                <input asp-for="intermediaria" class="form-control" type="text">
-                <span  asp-validation-for="intermediaria" class="small text-danger"></span> 
+<div class="container mt-5">
+    <h2 class="text-center">Cálculo de Média de provas UNIRP</h2>
+    <form method="post">
+        <div class="row">
+            <div class="col-md-6 mx-auto">                
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="intermediaria" class="form-label">Nota da Prova Intermediária: </label>
+                        <input asp-for="intermediaria" class="form-control" type="text">
+                        <span  asp-validation-for="intermediaria" class="small text-danger"></span> 
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="trabalho" class="form-label">Nota da Prova trabalho: </label>
+                        <input asp-for="trabalho" class="form-control" type="text">
+                        <span  asp-validation-for="trabalho" class="small text-danger"></span> 
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="semestral" class="form-label">Nota da Prova Semestral: </label>
+                        <input asp-for="semestral" class="form-control" type="text">
+                        <span  asp-validation-for="semestral" class="small text-danger"></span> 
+                    </div>
+                </div>
+                <div class="grid gap-2 mt-4">
+                    <div class="btn-group">
+                        <button asp-action="MediaCalcular"type="submit" class="btn btn-primary">Calcular Média</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col">
-            <div class="form-group">
-                <label asp-for="semestral" class="form-label">Nota da Prova Semestral: </label>
-                <input asp-for="semestral" class="form-control" type="text">
-                <span  asp-validation-for="semestral" class="small text-danger"></span> 
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <label asp-for="trabalho" class="form-label">Nota da Prova trabalho: </label>
-                <input asp-for="trabalho" class="form-control" type="text">
-                <span  asp-validation-for="trabalho" class="small text-danger"></span> 
-            </div>
-        </div>
-        <div class="grid gap-2 mt-4">
-            <div class="btn-group">
-                <button asp-action="MediaCalcular"type="submit" class="btn btn-primary">Calcular Média:</button>
-            </div>
-        </div>
-    </div>
-</form>
+    </form>
 
-@if(TempData["resultado"] != null){
-    <div class="alert alert-primary alert-dismissible mt-4">
-        <b>RESULTADO: </b>@TempData["resultado"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-}
+    @if(TempData["resultado"] != null)
+    {
+        <div class="alert alert-primary alert-dismissible fade show mt-4 w-50 mx-auto text-center" role="alert">
+            <b>Resultado:</b> @TempData["resultado"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+</div>
